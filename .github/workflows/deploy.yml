@@ -40,4 +40,4 @@ jobs:
           HOST: ${{ secrets.ssh_host }}
           DIST: ${{ secrets.dist }}
         run: |
-          rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" -avz /home/powerit/mkdocs_project/mkdocs_project/docs/*  $USER@$HOST:$DIST/site/
+          rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" -avz /home/powerit/mkdocs_project/docs/*  $USER@$HOST:$DIST
