@@ -29,7 +29,7 @@ jobs:
       - name: Add ssh key
         run: | 
           set -eu
-          mkdir "$HOME/.ssh"
+          mkdir "/home/powerit/.ssh"
           echo "${{ secrets.ACTIONS_SSH_KEY }}" > "$HOME/.ssh/key"
           chmod 600 "$HOME/.ssh/key"
 
@@ -38,6 +38,6 @@ jobs:
         env:
           USER: ${{ secrets.ssh_user }}
           HOST: ${{ secrets.ssh_host }}
-          DIST: ${{ secrets.dist }}
+          DIST: ${{ secrets.directory }}
         run: |
-          rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" -avz /home/powerit/mkdocs_project/docs/*  $USER@$HOST:$DIST
+          rsync -e "ssh -i /home/powerit/.ssh/key -o StrictHostKeyChecking=no" -avz /home/powerit/mkdocs_project/docs/*  $USER@$HOST:$DIRECTORY
