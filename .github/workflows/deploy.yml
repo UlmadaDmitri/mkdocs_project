@@ -1,0 +1,33 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master  # Здесь укажите имя вашей основной ветки
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8  # Укажите версию Python, если она необходима
+
+      - name: Install dependencies
+        run: |
+          pip install mkdocs mkdocs-material  # Укажите необходимые зависимости
+
+      - name: Build documentation
+        run: |
+          mkdocs build  # Команда для сборки документации
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_dir: ./site  # Директория, в которой находятся собранные файлы документации
