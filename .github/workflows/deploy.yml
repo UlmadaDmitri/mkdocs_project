@@ -38,6 +38,6 @@ jobs:
         env:
           USER: ${{ secrets.ssh_user }}
           HOST: ${{ secrets.ssh_host }}
-          DIST: ${{ secrets.directory }}
+          DIRECTORY: ${{ secrets.directory }}
         run: |
-          rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" -avz $HOME/mkdocs_project/docs/*  $USER@$HOST:$DIRECTORY
+          rsync -e "ssh -i $HOME/.ssh/key " -avz $HOME/mkdocs_project/docs/*  $USER@$HOST:$DIRECTORY
