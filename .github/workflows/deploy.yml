@@ -25,7 +25,13 @@ jobs:
       - name: Build documentation
         run: |
           mkdocs build  # Команда для сборки документации
-          scp -r site/* powerit@206.81.27.146:/home/powerit/mkdocs_project  # Перенос файлов на сервер
+
+      - name: Update host content   
+        shell: bash
+        env:
+          USER: ${{ secrets.ssh_user }}
+          HOST: ${{ secrets.ssh_host }}
+          DIST: ${{ secrets.dist }}
 
       - name: Add ssh key
         run: | 
