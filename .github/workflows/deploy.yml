@@ -31,8 +31,8 @@ jobs:
           mkdir "/home/runner/.ssh"
           pwd
           ls -la
-          echo "${{ secrets.SSH_KEY_CONNECTION }}" > "$HOME/.ssh/key"
-          chmod 600 "$HOME/.ssh/key"
+          echo "${{ secrets.SSH_KEY_CONNECTION }}" > /home/runner/.ssh/key"
+          chmod 600 /home/runner/.ssh/key"
 
       - name: Update host content   
         shell: bash
@@ -41,5 +41,5 @@ jobs:
           HOST: ${{ secrets.SSH_HOST }}
           DIST: ${{ secrets.DIST }}
         run: |
-          rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no $USER@$HOST " -avz $HOME/mkdocs_project/site/*  $USER@$HOST:$DIST/site/
+          rsync -e "ssh -i /home/runner/.ssh/key -o StrictHostKeyChecking=no $USER@$HOST " -avz $HOME/mkdocs_project/site/*  $USER@$HOST:$DIST/site/
 
