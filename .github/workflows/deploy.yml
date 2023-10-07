@@ -31,7 +31,6 @@ jobs:
           set -eu
           mkdir "$HOME/.ssh"
           echo "${{ secrets.SSH_KEY_CONNECTION }}" > "$HOME/.ssh/keys"
-          chmod 600 "/home/powerit/.ssh/keys"
 
       - name: Update host content   
         shell: bash
