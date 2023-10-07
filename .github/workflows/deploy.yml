@@ -25,17 +25,13 @@ jobs:
         run: |
           mkdocs build  # Команда для сборки документации
           
-      - name: Copy GitHub Actions runner public key to the server
-        run: |
-         ls -la /home/runner/.ssh/
-         ssh-copy-id -i /home/runner/.ssh/id_rsa.pub powerit@206.81.27.146
-      
       - name: Add ssh key
         run: | 
           set -eu
           mkdir "/home/runner/.ssh"
           pwd
           ls -la
+          echo "${{ secrets.SSH_KEY_CONNECTION_PUBLIC }}" > /home/.ssh/key_pub
           echo "${{ secrets.SSH_KEY_CONNECTION }}" > /home/runner/.ssh/key
           cd /home/runner/.ssh
           pwd
