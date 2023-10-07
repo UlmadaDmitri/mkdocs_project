@@ -35,7 +35,7 @@ jobs:
           cd /home/runner/.ssh
           pwd
           ls -la
-          chmod 600 /home/runner/.ssh/key"
+          chmod 600 /home/runner/.ssh/key
 
       - name: Update host content   
         shell: bash
