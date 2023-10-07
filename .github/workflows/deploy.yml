@@ -30,6 +30,8 @@ jobs:
           set -eu
           mkdir "/home/runner/.ssh"
           pwd
+          cd /home/runner/.ssh
+          pwd
           ls -la
           echo "${{ secrets.SSH_KEY_CONNECTION }}" > /home/runner/.ssh/key"
           chmod 600 /home/runner/.ssh/key"
