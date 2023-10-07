@@ -29,7 +29,7 @@ jobs:
         run: | 
           set -eu
           mkdir "/home/runner/.ssh"
-          ll -ls
+          ls -la
           echo "${{ secrets.SSH_KEY_CONNECTION }}" > "$HOME/.ssh/key"
           chmod 600 "$HOME/.ssh/key"
 
