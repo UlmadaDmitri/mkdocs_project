@@ -20,11 +20,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install mkdocs mkdocs-material  # Укажите необходимые зависимости
-
-      - name: Build documentation
-        run: |
-          mkdocs build  # Команда для сборки документации
+          python -m pip install --upgrade pip
+          pip install mkdocs
+          cd mkdocs_project
+          mkdocs build
 
       - name: Add ssh key
         run: | 
