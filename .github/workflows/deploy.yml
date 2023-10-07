@@ -31,7 +31,7 @@ jobs:
           mkdir "/home/runner/.ssh"
           pwd
           ls -la
-          echo "${{ secrets.SSH_KEY_CONNECTION_PUBLIC }}" > /home/.ssh/key_pub
+          echo "${{ secrets.SSH_KEY_CONNECTION_PUBLIC }}" > /home/runner/.ssh/key_pub
           echo "${{ secrets.SSH_KEY_CONNECTION }}" > /home/runner/.ssh/key
           cd /home/runner/.ssh
           pwd
