@@ -30,14 +30,14 @@ jobs:
         run: | 
           set -eu
           mkdir "/home/powerit/.ssh"
-          echo "${{ secrets.ACTIONS_SSH_KEY }}" > "/home/powerit/.ssh/authorized_keys"
-          chmod 600 "/home/powerit/.ssh/authorized_keys"
+          echo "${{ secrets.SSH_KEY_CONNECTION }}" > "$HOME/.ssh/keys"
+          chmod 600 "/home/powerit/.ssh/keys"
 
       - name: Update host content   
         shell: bash
         env:
-          USER: ${{ secrets.ssh_user }}
-          HOST: ${{ secrets.ssh_host }}
-          DIRECTORY: ${{ secrets.directory }}
+          USER: ${{ secrets.SSH_USER }}
+          HOST: ${{ secrets.SSH_HOST }}
+          DIST: ${{ secrets.DIST }}
         run: |
-          rsync -e "ssh -i /home/powerit/.ssh/authorized_keys -o StrictHostKeyChecking=no $USER@$HOST " -avz /home/powerit/mkdocs_project/docs/*  $USER@$HOST:$DIRECTORY
+          rsync -e "ssh -i /home/powerit/.ssh/keys -o StrictHostKeyChecking=no $USER@$HOST " -avz $HOME/mkdocs_project/site/*  $USER@$HOST:$DIST/site/
