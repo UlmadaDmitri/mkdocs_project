@@ -31,7 +31,7 @@ jobs:
           set -eu
           mkdir "$HOME/.ssh"
           echo "${{ secrets.SSH_KEY_CONNECTION }}" > "$HOME/.ssh/id_ed25519"
-          chmod 600 "/home/powerit/.ssh/keys"
+          chmod 600 "/home/powerit/.ssh/id_ed25519"
 
       - name: Update host content   
         shell: bash
