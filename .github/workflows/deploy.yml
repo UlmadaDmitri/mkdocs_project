@@ -22,15 +22,15 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install mkdocs
-          cd mkdocs_project
+          cd /home/runner/mkdocs_project
           mkdocs build
 
       - name: Add ssh key
         run: | 
           set -eu
-          mkdir "$HOME/.ssh"
-          echo "${{ secrets.SSH_KEY_CONNECTION }}" > "$HOME/.ssh/id_ed25519"
-          chmod 600 "/home/powerit/.ssh/id_ed25519"
+          mkdir "/home/runner/.ssh"
+          echo "${{ secrets.SSH_KEY_CONNECTION }}" > "$HOME/.ssh/git_key"
+          chmod 600 "/home/runner/.ssh/git_key"
 
       - name: Update host content   
         shell: bash
@@ -39,5 +39,5 @@ jobs:
           HOST: ${{ secrets.SSH_HOST }}
           DIST: ${{ secrets.DIST }}
         run: |
-          rsync -e "ssh -i $HOME/.ssh/id_ed25519 -o StrictHostKeyChecking=no $USER@$HOST " -avz $HOME/mkdocs_project/site/*  $USER@$HOST:$DIST/site/
+          rsync -e "ssh -i /home/runner/.ssh/git_key -o StrictHostKeyChecking=no $USER@$HOST " -avz /home/runner/mkdocs_project/site/*  $USER@$HOST:$DIST/site/
 
