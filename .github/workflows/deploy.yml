@@ -45,5 +45,5 @@ jobs:
           HOST: ${{ secrets.SSH_HOST }}
           DIST: ${{ secrets.DIST }}
         run: |
-          "ssh -i /home/runner/.ssh/key -o StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} -avz $HOME/mkdocs_project/site/*  powerit@206.81.27.146:/home/powerit/mkdocs_project/site/
+          "ssh -i /home/powerit/id_ed25519 -o StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} -avz $HOME/mkdocs_project/site/*  powerit@206.81.27.146:/home/powerit/mkdocs_project/site/
 
