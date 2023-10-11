@@ -32,12 +32,12 @@ jobs:
           pwd
           ls -la
           echo "${{ secrets.SSH_KEY_CONNECTION }}" > /home/runner/.ssh/key
-          cd /home/runner/.ssh
+          cd $HOME/.ssh
           pwd
-          chmod 600 /home/runner/.ssh/key
+          chmod 600 $HOME/.ssh/key
           ls -la
 
       - name: Update host content   
         shell: bash
         run: |
-          rsync -e "ssh -i $HOME.ssh/key -o StrictHostKeyChecking=no" -avz mkdocs_project/site/*  powerit@206.81.27.146:/home/powerit/mkdocs_project/site/
+          rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" -avz mkdocs_project/site/*  powerit@206.81.27.146:/home/powerit/mkdocs_project/site/
