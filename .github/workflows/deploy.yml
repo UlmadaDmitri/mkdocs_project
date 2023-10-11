@@ -29,12 +29,10 @@ jobs:
         run: | 
           set -eu
           mkdir "$HOME/.ssh"
-          pwd
           ls -la
           echo "${{ secrets.SSH_KEY_CONNECTION }}" > /home/runner/.ssh/key
-          pwd
           chmod 600 $HOME/.ssh/key
-          ls -la
+          pwd
 
       - name: Update host content   
         shell: bash
