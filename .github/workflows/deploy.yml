@@ -32,7 +32,6 @@ jobs:
           pwd
           ls -la
           echo "${{ secrets.SSH_KEY_CONNECTION }}" > /home/runner/.ssh/key
-          cd $HOME/.ssh
           pwd
           chmod 600 $HOME/.ssh/key
           ls -la
