@@ -28,17 +28,16 @@ jobs:
       - name: Add ssh key
         run: | 
           set -eu
-          mkdir "/home/runner/.ssh"
+          mkdir "$HOME/.ssh"
           pwd
           ls -la
-          echo "${{ secrets.SSH_KEY_CONNECTION_PUBLIC }}" > /home/runner/.ssh/key_pub
           echo "${{ secrets.SSH_KEY_CONNECTION }}" > /home/runner/.ssh/key
           cd /home/runner/.ssh
           pwd
-          ls -la
           chmod 600 /home/runner/.ssh/key
+          ls -la
 
       - name: Update host content   
         shell: bash
         run: |
-          rsync -e "ssh -i /home/runner/.ssh/key -o StrictHostKeyChecking=no" -avz mkdocs_project/site/*  powerit@206.81.27.146:/home/powerit/mkdocs_project/site/
+          rsync -e "ssh -i $HOME.ssh/key -o StrictHostKeyChecking=no" -avz mkdocs_project/site/*  powerit@206.81.27.146:/home/powerit/mkdocs_project/site/
