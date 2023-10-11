@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - master  # Здесь укажите имя вашей основной ветки
+      - master
 
 jobs:
   build:
@@ -16,14 +16,14 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8  # Укажите версию Python, если она необходима
+          python-version: 3.8
 
       - name: Install dependencies
         run: |
-          pip install mkdocs mkdocs-material  # Укажите необходимые зависимости
+          pip install mkdocs mkdocs-material
       - name: Build documentation
         run: |
-          mkdocs build  # Команда для сборки документации
+          mkdocs build
           
       - name: Add ssh key
         run: | 
