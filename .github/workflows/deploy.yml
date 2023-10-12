@@ -24,18 +24,15 @@ jobs:
       - name: Build documentation
         run: |
           cd docs-client
-          pwd
           mkdocs build
-          cd /home/runner/work/mkdocs_project/mkdocs_project/docs-client
-          pwd
-          ls -la
+          cd $HOME/work/mkdocs_project/mkdocs_project/docs-client
           
       - name: Add ssh key
         run: | 
           set -eu
           mkdir "$HOME/.ssh"
           ls -la
-          echo "${{ secrets.SSH_KEY_CONNECTION }}" > /home/runner/.ssh/key
+          echo "${{ secrets.SSH_KEY_CONNECTION }}" > $HOME/.ssh/key
           chmod 600 $HOME/.ssh/key
           pwd
 
