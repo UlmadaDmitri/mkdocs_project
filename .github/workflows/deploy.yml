@@ -23,6 +23,7 @@ jobs:
           pip install mkdocs mkdocs-material
       - name: Build documentation
         run: |
+          pwd
           mkdocs build
           
       - name: Add ssh key
