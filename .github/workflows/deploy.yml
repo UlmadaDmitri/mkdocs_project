@@ -26,8 +26,9 @@ jobs:
           cd docs-client
           pwd
           mkdocs build
-          cd /home/runner/work/mkdocs_project/mkdocs_project
+          cd /home/runner/work/mkdocs_project/mkdocs_project/docs-client
           pwd
+          ls -la
           
       - name: Add ssh key
         run: | 
@@ -41,4 +42,4 @@ jobs:
       - name: Update host content   
         shell: bash
         run: |
-          rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" -avz site/*  powerit@206.81.27.146:/home/powerit/mkdocs_project/site/
+          rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" -avz docs-client/site/*  powerit@206.81.27.146:/home/powerit/mkdocs_project/site/
