@@ -25,7 +25,6 @@ jobs:
         run: |
           cd docs-client
           mkdocs build
-          cd $HOME/work/mkdocs_project/mkdocs_project/docs-client
           
       - name: Add ssh key
         run: | 
@@ -38,5 +37,9 @@ jobs:
 
       - name: Update host content   
         shell: bash
+        env:
+          USER: ${{ vars.user }}
+          HOST: ${{ vars.host }}
+          DIST: ${{ vars.dist }}
         run: |
-          rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" -avz docs-client/site/*  powerit@206.81.27.146:$DIST/docs-client/site/
+          rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" -avz docs-client/site/*  $USER@$HOST:$DIST/docs-client/site/
