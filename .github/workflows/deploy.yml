@@ -26,6 +26,8 @@ jobs:
           cd docs-client
           pwd
           mkdocs build
+          cd /home/runner/work/mkdocs_project/mkdocs_project
+          pwd
           
       - name: Add ssh key
         run: | 
