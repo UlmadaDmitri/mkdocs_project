@@ -25,6 +25,7 @@ jobs:
         run: |
           cd docs-client
           mkdocs build
+          cd ..
           
       - name: Add ssh key
         run: | 
