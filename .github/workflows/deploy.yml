@@ -24,8 +24,8 @@ jobs:
       - name: Build documentation
         run: |
           cd docs-client
+          pwd
           mkdocs build
-          cd ..
           
       - name: Add ssh key
         run: | 
