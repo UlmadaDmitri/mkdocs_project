@@ -39,4 +39,4 @@ jobs:
       - name: Update host content   
         shell: bash
         run: |
-          rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" -avz docs-client/site/*  $USER@HOST:$DIST/docs-client/site/
+          rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" -avz docs-client/site/*  $USER@$HOST:$DIST/docs-client/site/
