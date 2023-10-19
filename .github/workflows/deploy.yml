@@ -23,6 +23,7 @@ jobs:
           pip install mkdocs mkdocs-material
       - name: Build documentation
         run: |
+          pwd
           cd docs-client
           mkdocs build
           
